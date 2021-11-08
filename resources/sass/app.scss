@@ -1,0 +1,27 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Overrides
+body {
+
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card-header {
+  font-weight: bold;
+  color: white;
+  background-color: teal;
+}
+
+.refresh-warning {
+  color: #c40000;
+}
