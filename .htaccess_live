@@ -1,0 +1,10 @@
+# # Copied and adjusted from russetheridge, 20211010
+Options -Indexes
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^brianetheridge.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.brianetheridge.com$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) http://brianetheridge.com/public/$1 [L]
+AddType x-httpd-php73 .php
+
