@@ -22,7 +22,6 @@ storage/logs
 docs/.DS_Store
 .idea/
 .env
-.env_live
 Homestead.yaml
 Homestead.json
 /.vagrant
