@@ -180,8 +180,8 @@ class Product extends Model
         $product_code = substr($dateCode, -5);  // Last 5 characters
         // We slice the first elements of the array as the description
         // Unfortunately this can include extra product details which we
-        // don't really want, but the array details wre inconsistent, so
-        // include everything to make sre we get the product title
+        // don't really want, but the array details are inconsistent, so
+        // include everything to make sure we get the product title
         $description = implode(' ',
             array_map(
                 'trim',
@@ -254,7 +254,7 @@ class Product extends Model
         $products = DB::select(DB::raw('select * from products where 1=1'));
         $productCount = count($products);
         if ($productCount <= 0) {
-            throw new Exception("No products found. Please load the product price file. $productCount");
+            throw new Exception("No products found. Please load the product price file.");
         }
 
         $products = DB::select(DB::raw('select * from products where id != page_number'));
@@ -270,6 +270,23 @@ class Product extends Model
         }
 
         return true;
+    }
+
+    /**
+     * Obtains the maximum product code from the products table
+     * @return number
+     * @throws Exception
+     */
+    public static function maxProductCode()
+    {
+        // Find the last product by product code
+        $product = DB::select(DB::raw('select * from products where 1=1 order by product_code DESC limit 1'));
+        $productCount = count($product);
+        if ($productCount <= 0) {
+            throw new Exception("No products found. Please load the product price file.");
+        }
+
+        return $product[0]->product_code;
     }
 
     /**
@@ -304,8 +321,8 @@ class Product extends Model
                 'message' => "Error processing product code: " . $e->getMessage(),
                 'originalProductCode' => $productCode,
                 'pageNumber' => '',
-                'description' => ''
-
+                'description' => '',
+                'effectiveDate' => ''
             ];
         }
     }

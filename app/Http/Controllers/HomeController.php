@@ -47,7 +47,9 @@ class HomeController extends Controller
 			$loggedIn = true;
 		}
 
-		return view('welcome', compact('loggedIn'));
+		$maximumProductCode = (new Product())->maxProductCode();
+
+		return view('welcome', compact('loggedIn', 'maximumProductCode'));
 	}
 
 	/**

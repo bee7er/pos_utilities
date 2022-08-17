@@ -18,7 +18,7 @@
                 </p>
                 <p>
                     Please note that this website is for demo purposes only.
-                    <span style="color:#c40000;font-weight: bold;">The maximum product code available is 14708.</span>
+                    <span style="color:#c40000;font-weight: bold;">The maximum product code available is {{ $maximumProductCode }}.</span>
                 </p>
             </div>
         </div>
